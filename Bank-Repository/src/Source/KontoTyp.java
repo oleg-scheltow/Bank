@@ -1,4 +1,4 @@
-package normal;
+package Source;
 
 public enum KontoTyp {
 

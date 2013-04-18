@@ -1,14 +1,16 @@
-package normal;
+package Source;
 
 import java.util.Date;
 
+import Exceptions.KontoLeerException;
+
 public class Konto {
 
-	public KontoBewegung kontoBewegung = new KontoBewegung();
-	public long kontoNummer;
-	public double kontoStand;
-	public KontoTyp kontoArt;
-	public static int index =0;
+	protected KontoBewegung kontoBewegung = new KontoBewegung();
+	protected long kontoNummer;
+	protected double kontoStand;
+	protected KontoTyp kontoArt;
+	protected static int index =0;
 	
 	
 	public Konto() {
@@ -44,7 +46,7 @@ public class Konto {
 		kontoBewegung.addiereBewegung(new Date(), "+"+betrag);
 	}
 	
-	public void auszahlen(double betrag) {
+	public void auszahlen(double betrag) throws KontoLeerException {
 		kontoStand=kontoStand-betrag;
 		kontoBewegung.addiereBewegung(new Date(), "-"+betrag);
 	}
@@ -55,6 +57,34 @@ public class Konto {
 
 	public double getBetrag() {
 		return kontoStand;
+	}
+
+	public KontoBewegung getKontoBewegung() {
+		return kontoBewegung;
+	}
+
+	public void setKontoBewegung(KontoBewegung kontoBewegung) {
+		this.kontoBewegung = kontoBewegung;
+	}
+
+	public double getKontoStand() {
+		return kontoStand;
+	}
+
+	public void setKontoStand(double kontoStand) {
+		this.kontoStand = kontoStand;
+	}
+
+	public KontoTyp getKontoArt() {
+		return kontoArt;
+	}
+
+	public void setKontoArt(KontoTyp kontoArt) {
+		this.kontoArt = kontoArt;
+	}
+
+	public void setKontoNummer(long kontoNummer) {
+		this.kontoNummer = kontoNummer;
 	}
 	
 	

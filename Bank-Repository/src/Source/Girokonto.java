@@ -1,22 +1,24 @@
-package normal;
+package Source;
 import java.util.Date;
+
+import Exceptions.KontoLeerException;
 
 public class Girokonto extends Konto {
 	double limit = -100;
 
-	public Girokonto(long kundenNummer, KontoTyp kontoArt) {
-		super(kundenNummer, kontoArt);
+	public Girokonto(long kundenNummer) {
+		super(kundenNummer, KontoTyp.GIROKONTO);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void auszahlen(double betrag) {
+	public void auszahlen(double betrag) throws KontoLeerException {
 		if (kontoStand - betrag >= limit) {
 			kontoStand = kontoStand - betrag;
 			kontoBewegung.addiereBewegung(new Date(), "+" + betrag);
 		} else {
-			System.out
-					.println("Es kann nichts ausgezahlt werden, da der limit erreicht ist");
+			throw new KontoLeerException("Saldo zu gering");
+			
 		}
 	}
 

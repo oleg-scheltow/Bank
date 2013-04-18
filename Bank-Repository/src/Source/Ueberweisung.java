@@ -1,9 +1,11 @@
-package normal;
+package Source;
 
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+
+import Exceptions.KontoLeerException;
 
 public class Ueberweisung {
 	public static HashMap<Long,ArrayList<String>> kontoListe = new HashMap<Long, ArrayList<String>>();
@@ -31,7 +33,12 @@ public class Ueberweisung {
 		ueberweisungsListe.add(date +": "+senderKonto.getKontoNummer()+" sendet "+betrag + " zu "+empfaengerKonto.getKontoNummer());
 		kontoListe.put(senderKonto.getKontoNummer(), ueberweisungsListe);
 		
-		senderKonto.auszahlen(betrag);
+		try {
+			senderKonto.auszahlen(betrag);
+		} catch (KontoLeerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		empfaengerKonto.einzahlen(betrag);
 	}
 
