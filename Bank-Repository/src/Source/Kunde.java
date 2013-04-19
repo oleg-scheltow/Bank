@@ -19,9 +19,9 @@ public class Kunde {
 	public Konto anlegenKonto(KontoTyp kontoTyp) {
 		Konto konto;
 		if(kontoTyp == KontoTyp.GIROKONTO){
-			konto = new Girokonto(kundenNummer, kontoTyp);
+			konto = new Girokonto(kundenNummer);
 		}else{
-			konto = new Sparkonto(kundenNummer, kontoTyp);
+			konto = new Sparkonto(kundenNummer);
 		}
 		kontoListe.add(konto);
 

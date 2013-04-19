@@ -5,8 +5,8 @@ import java.util.Date;
 public class Sparkonto extends Konto {
 	double festzinsVereinbarung = 0;
 
-	public Sparkonto(long kundenNummer, KontoTyp kontoArt) {
-		super(kundenNummer, kontoArt);
+	public Sparkonto(long kundenNummer) {
+		super(kundenNummer, KontoTyp.SPARKONTO);
 	}
 
 	@Override
